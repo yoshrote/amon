@@ -8,9 +8,6 @@ from amon.api import log
 
 class TestLoggingApi(unittest.TestCase):
 
-	def setUp(self):
-		log.model.mongo.database = 'amon_test'
-
 	def test_log(self):
 		log.model.collection.remove()
 		log({"bar":"baz"})

@@ -63,3 +63,12 @@ class TestCommonAPIModel(unittest.TestCase):
 
 
 
+class TestExceptionsAPIModel(unittest.TestCase):
+	
+	def setUp(self):
+		self.model = ExceptionAPIModel()
+
+	def test_save_exception(self):
+		self.model.collection.remove()
+		self.model.save_exception({"test": "test"})
+		eq_(1, self.model.collection.count())
