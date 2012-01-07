@@ -17,6 +17,7 @@ class MongoBackend():
 	user = settings.MONGO['user']
 	password = settings.MONGO['password']
 	database = settings.MONGO['database']
+	collection_prefix = settings.MONGO['collection_prefix']
 	valid_collections = settings.SYSTEM_CHECKS \
 			+ settings.PROCESS_CHECKS\
 			+ internal_collections
@@ -53,9 +54,9 @@ class MongoBackend():
 		
 		if collection in self.valid_collections:
 			if collection in self.internal_collections:
-				collection = "{0}".format(collection) # protect the collection that Amon uses internally
+				collection = "{0}.{1}".format(collection_prefix,collection) # protect the collection that Amon uses internally
 			else:
-				collection = "amon_{0}".format(collection)
+				collection = "amon_{0}.{1}".format(collection_prefix,collection)
 			
 			collection = db[collection]
 		
