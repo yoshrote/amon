@@ -22,6 +22,7 @@ MONGO = {
 	'host': _mongo.get('host', '127.0.0.1'),
 	'user': _mongo.get('user', ''),
 	'password': _mongo.get('password', ''),
+	'collection_prefix': _mongo.get('collection_prefix', ''),
 	'database' : 'amon',
 }
 
